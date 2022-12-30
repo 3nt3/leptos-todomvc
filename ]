@@ -1,0 +1,18 @@
+use leptos::*;
+
+#[component]
+pub fn SimpleCounter(cx: Scope) -> impl IntoView {
+    let (todos, set_todos) = create_signal::<Vec<String>>(cx, vec![]);
+
+    let clear_todos = move |_| set_todos(vec![]);
+    let add_todo = move |x| {
+        console_log(x);
+    }
+
+    view! { cx,
+        <div>
+            <span>"n todos: " {todos().len()}</span>
+            <button on:click=clear_todos>"clear"</button>
+        </div>
+    }
+}
